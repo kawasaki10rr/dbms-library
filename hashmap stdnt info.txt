@@ -1,0 +1,19 @@
+import java.util.HashMap;
+
+public class stuhashmap {
+    public static void main(String[] args) {
+        HashMap <Integer, String> students = new HashMap<>();
+
+        students.put(101, "chirag");
+        students.put(102,"dilip");
+        students.put(103,"anand");
+
+        System.out.println("Student details of usn 102 : " + students.get(102));
+        students.remove(101);
+        System.out.println("After removing 101 : " + students);
+
+        for(Integer id : students.keySet()){
+            System.out.println("Id : " + id + " name : " + students.get(id));
+        }
+    }
+}
