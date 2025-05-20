@@ -1,19 +1,70 @@
-import java.util.HashMap;
+package lab;
 
-public class stuhashmap {
+import java.util.*;
+
+public class StudentMap {
     public static void main(String[] args) {
-        HashMap <Integer, String> students = new HashMap<>();
+        HashMap<Integer, String> students = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
+        int choice;
 
-        students.put(101, "chirag");
-        students.put(102,"dilip");
-        students.put(103,"anand");
+        do {
+            System.out.println("\n1. Add Student");
+            System.out.println("2. Get Student Name");
+            System.out.println("3. Remove Student");
+            System.out.println("4. Display All");
+            System.out.println("5. Exit");
+            System.out.print("Choice: ");
+            choice = sc.nextInt();
 
-        System.out.println("Student details of usn 102 : " + students.get(102));
-        students.remove(101);
-        System.out.println("After removing 101 : " + students);
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine(); // clear buffer
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
+                    students.put(id, name);
+                    System.out.println("Student added.");
+                    break;
 
-        for(Integer id : students.keySet()){
-            System.out.println("Id : " + id + " name : " + students.get(id));
-        }
+                case 2:
+                    System.out.print("Enter ID: ");
+                    int searchId = sc.nextInt();
+                    System.out.println("Name: " + students.getOrDefault(searchId, "Not Found"));
+                    break;
+
+              
+                case 3:
+                    System.out.print("Enter ID to remove: ");
+                    int removeId = sc.nextInt();
+                    if (students.containsKey(removeId)) {
+                        students.remove(removeId);
+                        System.out.println("Student removed.");
+                    } else {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+
+                case 4:
+                	if (students.isEmpty()) {
+                	    System.out.println("No students found.");
+                	} else {
+                	    System.out.println("All Students:");
+                	    for (Map.Entry<Integer, String> entry : students.entrySet()) {
+                	        System.out.println("ID: " + entry.getKey() + ", Name: " + entry.getValue());
+                	    }
+                	}
+                    break;
+
+                case 5:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 5);
     }
 }
