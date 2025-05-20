@@ -1,0 +1,91 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+public class StudentInformationForm extends JFrame implements ActionListener {
+
+    JTextField nameField, usnField, branchField;
+    JButton addButton, clearButton, viewAllButton;
+
+    ArrayList<String> studentList = new ArrayList<>();
+
+    public StudentInformationForm() {
+        setTitle("Student Information Form");
+        setSize(400, 250);
+        setLayout(new BorderLayout());
+
+        // Create panel
+        JPanel inputPanel = new JPanel(new GridLayout(4, 2, 10, 10));
+        inputPanel.setBorder(BorderFactory.createTitledBorder("Enter Student Details"));
+
+        // Fields
+        inputPanel.add(new JLabel("Name:"));
+        nameField = new JTextField();
+        inputPanel.add(nameField);
+
+        inputPanel.add(new JLabel("USN:"));
+        usnField = new JTextField();
+        inputPanel.add(usnField);
+
+        inputPanel.add(new JLabel("Branch:"));
+        branchField = new JTextField();
+        inputPanel.add(branchField);
+
+        // Empty label to align buttons
+        inputPanel.add(new JLabel());
+
+        // Buttons
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+
+        addButton = new JButton("Add");
+        clearButton = new JButton("Clear");
+        viewAllButton = new JButton("View All");
+
+        addButton.addActionListener(this);
+        clearButton.addActionListener(this);
+        viewAllButton.addActionListener(this);
+
+        buttonPanel.add(addButton);
+        buttonPanel.add(clearButton);
+        buttonPanel.add(viewAllButton);
+
+        // Add panels to frame
+        add(inputPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addButton) {
+            String name = nameField.getText();
+            String usn = usnField.getText();
+            String branch = branchField.getText();
+
+            if (!name.isEmpty() && !usn.isEmpty() && !branch.isEmpty()) {
+                studentList.add(name + " | " + usn + " | " + branch);
+                JOptionPane.showMessageDialog(this, "Student added successfully!", "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Please fill all fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } else if (e.getSource() == clearButton) {
+            nameField.setText("");
+            usnField.setText("");
+            branchField.setText("");
+
+        } else if (e.getSource() == viewAllButton) {
+            StringBuilder sb = new StringBuilder();
+            for (String student : studentList) {
+                sb.append(student).append("\n");
+            }
+            JOptionPane.showMessageDialog(this, sb.length() > 0 ? sb.toString() : "No students added.", "Student List", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        new StudentInformationForm();
+    }
+}
