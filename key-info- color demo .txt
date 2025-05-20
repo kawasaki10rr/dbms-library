@@ -1,0 +1,70 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class KeyDemo extends Frame implements KeyListener {
+    TextField charField = new TextField();
+    TextField codeField = new TextField();
+    TextField modField = new TextField();
+    TextField actionField = new TextField();
+
+    public KeyDemo() {
+        setLayout(new GridLayout(4, 2));
+
+        add(new Label("Character:")); add(charField);
+        add(new Label("Key Code:")); add(codeField);
+        add(new Label("Modifier Key:")); add(modField);
+        add(new Label("Action Key:")); add(actionField);
+
+        // Make text fields read-only
+        charField.setEditable(false);
+        codeField.setEditable(false);
+        modField.setEditable(false);
+        actionField.setEditable(false);
+
+        // Add key listener to frame
+        addKeyListener(this);
+        setFocusable(true); // This is crucial
+        requestFocus();     // Request focus to get key events
+
+        setSize(300, 200);
+        setVisible(true);
+
+        // Close window on X
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                dispose();
+            }
+        });
+    }
+
+    public void keyPressed(KeyEvent e) {
+        char ch = e.getKeyChar();
+        int code = e.getKeyCode();
+
+        charField.setText("" + ch);
+        codeField.setText("" + code);
+        modField.setText(e.isAltDown() || e.isShiftDown() || e.isControlDown() ? "Yes" : "No");
+        actionField.setText(e.isActionKey() ? "Yes" : "No");
+
+        // Color change logic
+        Color c = switch (Character.toUpperCase(ch)) {
+            case 'A' -> Color.RED;
+            case 'S' -> Color.GREEN;
+            case 'D' -> Color.BLUE;
+            case 'W' -> Color.ORANGE;
+            default -> Color.BLACK;
+        };
+
+        charField.setForeground(c);
+        codeField.setForeground(c);
+        modField.setForeground(c);
+        actionField.setForeground(c);
+    }
+
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        new KeyDemo();
+    }
+}
