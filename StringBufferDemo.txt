@@ -1,0 +1,18 @@
+public class strbuf {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer("Hello ");
+
+        sb.insert(6, "java");
+        System.out.println(sb);
+
+        sb.append(" world");
+        System.out.println(sb);
+
+        sb.delete(6, 11);
+        System.out.println(sb);
+
+        sb.reverse();
+        System.out.println(sb);
+
+    }
+}

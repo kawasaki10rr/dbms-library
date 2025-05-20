@@ -1,0 +1,27 @@
+public class stringconstructorsdemo {
+    public static void main(String[] args) {
+        
+        //using new keyword
+        String str = new String("Demo");
+
+        //using string literal
+        String str1 = "JAVA LAB";
+
+        //string from char array
+        char[] chr = {'j','a','v','a'};
+        String str2 = new String(chr);
+
+
+        // string from bytte
+        byte[] byt = {66,67,68};
+        String str3= new String(byt);
+
+
+
+        System.out.println("String using literal : "+str1);
+        System.out.println("String using new keyword : "+str);
+        System.out.println("String using char array : "+str2);
+        System.out.println("String using byte : "+str3);
+        
+    }
+}

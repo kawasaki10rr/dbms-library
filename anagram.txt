@@ -1,21 +1,16 @@
- 
 import java.util.*;
-
 public class anagrams{
-    public static void main (String  args[]){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter fist string :  ");
-        String a = sc.nextLine().replaceAll("//s", "").toLowerCase();
+        System.out.println("Enter first string : ");
+        String a = sc.nextLine().toLowerCase().replaceAll("\\s", "");
 
-        System.out.println("Enter second string : ");
-        String b = sc.nextLine().replaceAll("//s", "").toLowerCase();
+        System.out.println("Enter second string  : ");
+        String b = sc.nextLine().toLowerCase().replaceAll("\\s", "");
 
-        if(a.length() != b.length()) System.out.println("not an anagram! ");
-        else{
-            char [] x = a.toCharArray(), y = b.toCharArray();
-            Arrays.sort(x); Arrays.sort(y);
-            System.out.println(Arrays.equals(x, y) ? "Anagrams" : "Not anagrams" );
-        }
+        char[] x = a.toCharArray(), y= b.toCharArray();
+        Arrays.sort(x); Arrays.sort(y);
+        System.out.println(Arrays.equals(x, y) ? "Anagrams " : "Not anagrams ");
         sc.close();
     }
 }

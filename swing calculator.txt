@@ -1,0 +1,50 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SwingCalculator extends JFrame implements ActionListener {
+    JTextField num1, num2, result;
+    JButton add, sub, mul, div;
+
+    SwingCalculator() {
+        setLayout(new FlowLayout());
+
+        num1 = new JTextField(10);
+        num2 = new JTextField(10);
+        result = new JTextField(10);
+        result.setEditable(false);
+
+        add = new JButton("+");
+        sub = new JButton("-");
+        mul = new JButton("*");
+        div = new JButton("/");
+
+        add(num1); add(num2); add(add); add(sub); add(mul); add(div); add(result);
+
+        add.addActionListener(this);
+        sub.addActionListener(this);
+        mul.addActionListener(this);
+        div.addActionListener(this);
+
+        setSize(250, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        double a = Double.parseDouble(num1.getText());
+        double b = Double.parseDouble(num2.getText());
+        double res = 0;
+
+        if (e.getSource() == add) res = a + b;
+        else if (e.getSource() == sub) res = a - b;
+        else if (e.getSource() == mul) res = a * b;
+        else if (e.getSource() == div) res = a / b;
+
+        result.setText(String.valueOf(res));
+    }
+
+    public static void main(String[] args) {
+        new SwingCalculator();
+    }
+}

@@ -1,0 +1,24 @@
+import javax.swing.*;
+import javax.swing.plaf.TreeUI;
+
+import java.awt.event.*;
+public class buttons {
+    public  static void main (String []args){
+        
+        JFrame frame = new JFrame("Button demo");
+        JButton alpha = new JButton("Alpha ");
+        JButton beta = new JButton("beta");
+        JLabel label = new JLabel("Press a button ");
+
+        frame.setSize(400,400);
+        frame.setLayout(new java.awt.FlowLayout());;
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(alpha);
+        frame.add(beta);
+        frame.add(label);
+        frame.setVisible(true);
+
+        alpha.addActionListener(e -> label.setText("Alpha clicked"));
+        beta.addActionListener(e -> label.setText("Beta clicked "));
+    }
+}

@@ -1,0 +1,17 @@
+public class StringMethodsDemo {
+public static void main(String[] args) {
+String str = "Hello Java World";
+// Character Extraction
+System.out.println("Char at 6: " + str.charAt(6));
+// String Comparison
+String anotherStr = "hello java world";
+System.out.println("Equals: " + str.equals(anotherStr));
+System.out.println("Equals Ignore Case: " + str.equalsIgnoreCase(anotherStr));
+// Search
+System.out.println("Index of 'Java': " + str.indexOf("Java"));
+// Modification
+System.out.println("Replace 'Java' with 'Python': " + str.replace("Java", "Python"));
+System.out.println("To Upper Case: " + str.toUpperCase());
+System.out.println("Substring (6 to 10): " + str.substring(6, 10));
+}
+}

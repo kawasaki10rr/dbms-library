@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        // Create an ArrayList of fruits
+        ArrayList<String> list = new ArrayList<>();
+
+        // Adding elements
+        list.add("Mango");
+        list.add("Grapes");
+        list.add("Watermelon");
+        list.add("Banana");
+
+        System.out.println("Original List: " + list);
+
+        // Removing element at index 1
+        list.remove(1); // Removes "Grapes"
+        System.out.println("After removing element at index 1: " + list);
+
+        // Sorting the list
+        Collections.sort(list);
+        System.out.println("Sorted List:");
+        for (String fruit : list) {
+            System.out.println(fruit);
+        }
+
+        // Converting list to array using toArray()
+        String[] fruitArray = list.toArray(new String[0]);
+        System.out.println("Array Elements:");
+        for (String fruit : fruitArray) {
+            System.out.println(fruit);
+        }
+    }
+}
